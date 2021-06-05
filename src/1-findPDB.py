@@ -1,7 +1,7 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 # 06/04/2021
 # Author: Hao Tian & Sian Xiao
-
 
 import os
 
@@ -45,13 +45,11 @@ print("total of %d missing" % count)
 if not os.path.isdir("../data/processedData/"):
     os.system("mkdir ../data/processedData")
 
-
 # copy pdbIDs to downloads.txt
 with open("../data/processedData/downloads.txt", 'w') as fh:
     length = len(downloads)
     for i, pdb in enumerate(downloads):
         fh.write(pdb) if i == length - 1 else fh.write(pdb + '\n')
-
 
 # create clean version of alloInfo
 with open("../data/processedData/alloInfoClean.txt", 'w') as fh:
