@@ -55,3 +55,4 @@ with open("../data/processedData/downloads.txt", 'w') as fh:
 with open("../data/processedData/alloInfoClean.txt", 'w') as fh:
     for info in alloInfoClean:
         fh.write(info)
+
