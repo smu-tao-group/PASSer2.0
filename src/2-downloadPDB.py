@@ -26,3 +26,4 @@ for pdbID in pdbs:
     url = rcsb + pdbID + ".pdb"
     r = requests.get(url)
     open("../data/pdbs/%s.pdb" % pdbID, "wb").write(r.content)
+
