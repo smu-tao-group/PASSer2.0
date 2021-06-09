@@ -21,12 +21,12 @@ pdbs = [line.strip() for line in pdbsTemp]
 # label pockets with 1 or 0
 # size = num of proteins
 # size of each element = num of pockets in each protein
-labels = []  # [[pockets, size=num] proteins, size=num]
+labels = []  # List[List[int]]
 
 # FPocket features
 # size = num of proteins
-# size of each element = num of pockets in each protein * 19 features)
-features = []  # [[[features, size=19] pockets, size=num] proteins, size=num]
+# size of each element = num of pockets in each protein * 19 features
+features = []  # List[List[List[float]]]
 
 # at least need 9 heavy atoms to be labeled as 1
 # ref: mean value of heavy atoms in 20 amino acids = 9
