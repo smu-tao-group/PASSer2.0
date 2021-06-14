@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# 06/04/2021
+# 06/13/2021
 # Author: Hao Tian & Sian Xiao
 
 import os
@@ -17,7 +17,7 @@ with open("../data/sourceData/ASD_Release_201909_AS.txt", 'r') as fh:
 with open("../data/sourceData/pdbs.txt", 'r') as fh:
     pdbs = fh.readlines()
     pdbs = [line.strip() for line in pdbs]
-    # assert len(pdbs) == 90
+    assert len(pdbs) == 90
 
 
 # check if PDBs missed in original files
@@ -35,7 +35,7 @@ for pdb in pdbs:
             according to reference'''
         if pdb == "1Z8D" or pdb == "1CE8":
             index += 1
-        alloInfoClean.append(alloInfoOri[index + 1])
+        alloInfoClean.append(alloInfoOri[index + 1])  # one for headline
         downloads.append(pdb)
 
 print("total of %d missing" % count)

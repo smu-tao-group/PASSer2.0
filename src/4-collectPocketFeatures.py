@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# 06/08/2021
+# 06/13/2021
 # Author: Hao Tian & Sian Xiao
 
 import glob
@@ -58,11 +58,13 @@ for i in range(len(pdbs)):
         continue
 
     cur_label = [1 if item >= n_atoms else 0 for item in counts]
-    labels.append(cur_label)
 
     # collect FPocket features
     features_collections = "../data/pockets/%s_out/%s_info.txt" % (pdb, pdb)
     cur_feature = extractPocket(features_collections)
+
+    assert len(cur_label) == len(cur_feature)
+    labels.append(cur_label)
     features.append(cur_feature)
 
 assert len(labels) == len(features)

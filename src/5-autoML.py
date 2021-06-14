@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# 06/13/2021
+# 06/14/2021
 # Author: Hao Tian & Sian Xiao
 
 """
@@ -19,6 +19,7 @@ from autogluon.tabular import TabularDataset, TabularPredictor
 import utils.splitData as splitData
 import utils.top3 as top3
 
+
 # turn off warnings
 warnings.filterwarnings('ignore')
 
@@ -31,8 +32,8 @@ features = pickle.load(open("../data/classification/features.pkl", "rb"))
 # read args
 pos_neg_ratio = int(sys.argv[1])
 stacking = bool(int(sys.argv[2]))
-file_dir = sys.argv[3] if len(sys.argv) >= 4 else None
-RANDOM_SEED = int(sys.argv[4]) if len(sys.argv) >= 5 else time.time_ns()
+RANDOM_SEED = int(sys.argv[3])
+file_dir = sys.argv[4] if len(sys.argv) >= 5 else None
 time = int(sys.argv[5]) if len(sys.argv) >= 6 else 2
 
 
@@ -56,7 +57,7 @@ testIndex = index[(TRAINSIZE + VALIDSIZE):]
 
 
 # split data as needed
-if pos_neg_ratio <= 10:
+if pos_neg_ratio <= 20:
     # ? use part of the data
     x_train, y_train = splitData.splitTrain(
         trainIndex, labels, features, pos_neg_ratio, RANDOM_SEED)

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# 06/07/2021
-# Author: Hao Tian & Sian Xiao
+# 06/13/2021
+# Author: Sian Xiao & Hao Tian
 
 """
 Two examples for function atomCount
@@ -36,10 +36,11 @@ def atomCount(fileDirection: str, info: str) -> int:
         chains = chains.strip()
         chainID = chains[6]
         atoms = chains[8:].split(",")
+        # map atoms to chain ID
         for atom in atoms:
             atomTarget[atom] = chainID
 
-    # map residues to chain ID
+    # count matched atoms
     pocket = open(fileDirection, "r").readlines()
     count = 0
     for line in pocket:

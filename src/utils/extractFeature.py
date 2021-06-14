@@ -1,19 +1,20 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# 06/08/2021
+# 06/13/2021
 # Author: Hao Tian & Sian Xiao
 
 import warnings
+from typing import List
 
 
-def extractPocket(fileDirection: str) -> list:
-    """extract pocket features calculated by FPocket
+def extractPocket(fileDirection: str) -> List[List[float]]:
+    """extract pocket features of a protein, calculated by FPocket
 
     Args:
         fileDirection (str): file location '../data/pockets/{pdb}_out/{pdb}_info.txt'
 
     Returns:
-        list: features of each pocket for a certain PDB, size is number of pockets, size of each element is 19 (number of feature)
+        List[List[float]]: features of each pocket for a certain PDB, size is number of pockets, size of each element is 19 (number of feature)
     """
 
     pocket = open(fileDirection + "", "r").readlines()
