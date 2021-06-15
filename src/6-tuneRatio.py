@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# 06/14/2021
+# 06/15/2021
 # Author: Hao Tian & Sian Xiao
 
 """
@@ -12,6 +12,8 @@ import os
 
 file_dir = "../analysis/ratio.txt"
 pos_neg_ratio = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20]
+# not set stacking
+stacking = 0
 
 
 # prepare ../analysis/
@@ -24,8 +26,6 @@ open(file_dir, "wb").close()
 
 
 for ratio in pos_neg_ratio:
-    # not set stacking
-    stacking = 0
     # use different random seeds
     for seed in range(0, 100, 10):
         print(ratio, stacking, seed)
