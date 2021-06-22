@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# 06/21/2021
+# 06/22/2021
 # Author: Sian Xiao & Hao Tian
 
 """
@@ -18,35 +18,9 @@ Every single data point (11 lines):
 
 """
 
-from typing import List
-
 import numpy as np
 
-
-def readData(line: str) -> float:
-    """read data number from lines
-
-    Args:
-        line (str): every line containing data number
-
-    Returns:
-        float: data number
-    """
-
-    return float(line.split(">")[-1].strip())
-
-
-def readProb(line: str) -> List[float]:
-    """read probability numbers from lines
-
-    Args:
-        line (str): line containing probability numbers
-
-    Returns:
-        List[float]: probability numbers in list
-    """
-
-    return list(map(float, line.split(">")[-1].strip().split(" ")))
+from utils.stats import readData, readProb
 
 
 file_dir = "../analysis/ratio.txt"
