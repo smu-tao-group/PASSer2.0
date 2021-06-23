@@ -10,7 +10,6 @@
 import pickle
 import random
 import sys
-import time
 import warnings
 
 import numpy as np
@@ -133,7 +132,8 @@ results = open(file_dir, "a")
 # head
 results.write(str(pos_neg_ratio) + " ")
 results.write(str(stacking) + " ")
-results.write(str(RANDOM_SEED) + "\n")
+results.write(str(RANDOM_SEED) + " ")
+results.write(str(time) + "\n")
 
 metrics = ['f1', 'accuracy', 'precision', 'recall']
 
