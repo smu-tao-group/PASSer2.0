@@ -30,7 +30,7 @@ infoLen = 11
 
 stats = []  # List[List[float]]: val_f1, val_pre, val_rec, test_f1, test_pre, test_rec, prob1, prob2, prob3
 for i in range(0, len(results), infoLen):
-    temp = results[i, i+infoLen]
+    temp = results[i: i+infoLen]
     val_f1 = readData(temp[1])
     val_precision = readData(temp[3])
     val_recall = readData(temp[4])
