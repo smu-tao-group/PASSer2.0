@@ -23,6 +23,14 @@ minimum_idxs = []
 
 duplicate = set()
 
+with open('asd.txt', 'r') as f:
+    lines= f.readlines()
+asd = []
+for line in lines:
+    asd.append(line.split('&')[-1].split('\\\\')[0].strip())
+
+
+
 ################
 labels = []
 features = []
@@ -34,7 +42,7 @@ for i in range(len(fileNames)):
         missing += 1
         pdbID.pop(0)
     pdbID.pop(0)
-    if fileNames[i][-16:-12] in duplicate:
+    if fileNames[i][-16:-12] in duplicate or fileNames[i][-16:-12] in asd:
         continue
     duplicate.add(fileNames[i][-16:-12])
     protein = open(fileNames[i], "r").readlines()
@@ -93,56 +101,7 @@ for i in range(len(fileNames)):
     labels.append(label)
     features.append(feature)
 
-print(sum(len(lbl) for lbl in label))
-
-# pickle.dump(labels, open("./labels_ASBench.pkl", "wb"))
-# pickle.dump(features, open("./features_ASBench.pkl", "wb"))
-
-
-##############
-
-
-# minimum_dists = np.array(minimum_dists)
-# minimum_idxs = np.array(minimum_idxs)
-
-# minimum_idxs = np.delete(minimum_idxs, np.where(minimum_dists >= 10))
-
-
-# import collections
-
-# counter = collections.Counter(minimum_idxs)
-# cnt = 0
-# counter_percent = []
-# for i in range(10):
-#     cnt += counter[i]
-#     counter_percent.append(cnt / len(minimum_idxs))
-
-
-# labels = pickle.load(open("./classification/labels.pkl", "rb"))
-# ori_counter = collections.Counter()
-
-# for i in range(len(labels)):
-#     for j in range(len(labels[i])):
-#         if labels[i][j] == 1:
-#             ori_counter[j] += 1
-
-# cnt = 0
-# ori_counter_percent = []
-# for i in range(10):
-#     cnt += ori_counter[i]
-#     ori_counter_percent.append(cnt / len(minimum_idxs))
-
-
-
-# import matplotlib.pyplot as plt
-
-# plt.figure(figsize=(6, 4), dpi=300)
-# plt.plot(counter_percent)
-# plt.plot(ori_counter_percent)
-# plt.legend(["counter", "ori 90"])
-# plt.xlabel("position")
-# plt.savefig("percent.png")
-
-
-
-
+print(sum(len(lbl) for lbl in labels))
+print(duplicate)
+pickle.dump(labels, open("./labels_ASBench_1.pkl", "wb"))
+pickle.dump(features, open("./features_ASBench_1.pkl", "wb"))
